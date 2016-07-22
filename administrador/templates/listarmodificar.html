@@ -1,0 +1,33 @@
+{% extends 'master.html' %}
+	{% block contenido %}
+		{% if mat %}
+		<div class="">MODIFICAR MATERIA</div>
+		
+		<table class="table table-striped">
+		<tr>
+			<td><label>Nombre</label></td>
+			<td><label>Codigo</label></td>
+			<td><label>Cupo</label></td>
+			<td></td>
+			<td></td>			
+		</tr>
+
+		{% for m in mat%}
+		<tr>
+			<td>{{m.nombre}}</td>
+			<td>{{m.codigo}}</td>
+			<td>{{m.cupo}}</td>
+			<td><a href="../modificar?codigo={{m.codigo}}">MODIFICAR</a></td>
+			<td><a href="../eliminar?codigo={{m.codigo}}">ELIMINAR</a></td>	
+		</tr>
+		{% endfor %}
+		</table>
+		{% else %}
+			<div class="alert alert-success">NO EXISTEN MATERIAS DISPONIBLES</div>
+		{% endif %}
+		<a href="../crearMateria" type="button" class="btn btn-default btn-success" aria-label="Left Align">
+   <span class="glyphicon glyphicon-plus " aria-hidden="true"></span>
+  <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
+
+</a>
+	{% endblock contenido %}

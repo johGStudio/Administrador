@@ -1,0 +1,53 @@
+{% extends 'master.html' %}
+	{% block contenido %}
+	<div class="container">
+	<a href="crearMateria"><button><span class="lyphicon glyphicon-plus"> INGRESAR MATERIA</span></button></a>
+	<a href="crearAlumno"><button><span class="lyphicon glyphicon-plus"> INGRESAR ALUMNO</span></button></a>
+{% if mat %}
+		<h4>Materias Disponibles</h4>
+		<table class="table">
+		<tr>
+			<td><label>Nombre</label></td>
+			<td><label>Codigo</label></td>
+			<td><label>Cupo</label></td>
+			<td></td>		
+		</tr>
+	{% for m in mat%}
+		<tr>
+			<td>{{m.nombre}}</td>
+			<td>{{m.codigo}}</td>
+			<td>{{m.cupo}}</td>
+			<td><a href="eliminarMateria?codigo={{m.codigo}}" onclick="if(!confirm('Está seguro que desea eliminar el registro?'))return false;">Eliminar</a></td>
+		</tr>
+	{% endfor %}
+		</table>
+{% else %}
+		<div class="alert alert-info">NO EXISTEN MATERIAS DISPONIBLES</div>
+{% endif %}
+<!-- .................................-->
+</div>
+{% if alum %}
+<h4>Alumnos Disponibles</h4>
+	<div class="container">
+		<table class="table">
+			<tr>
+				<td>Cédula</td>
+				<td>Nombre</td>
+				<td>Apellido</td>
+				<td></td>
+			</tr>
+		{% for a in alum%}
+			<tr>
+				<td>{{a.cedula}}</td>
+				<td>{{a.nombre}}</td>
+				<td>{{a.apellido}}</td>
+				<td></td>
+			</tr>	
+		{% endfor %}
+		</table>
+{% else %}
+		<div class="alert alert-info">NO EXISTEN ALUMNOS DISPONIBLES</div>
+{% endif %}
+
+	</div>
+{% endblock contenido %}

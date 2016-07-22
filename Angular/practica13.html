@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practica 13</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="angular/angular.min.js"></script>
+	<script src="angular/angular-route.js"></script>
+	<script src="angular/angular-resource.js"></script>
+	<script src="js/practica13.js"></script>
+	<link href="css/estilo.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body ng-app="app">
+<div ng-controller="controlador13">
+	<form ng-hide="foco" ng-submit="ingresar()" >
+		<input type="text" name="cedula" ng-model="cedulaEntrada" placeholder="Cedula">
+		<input type="submit" value="Ingresar"></input>
+	</form>
+	{{mensaje}}
+
+	<div class="well" ng-show="foco">
+	<center><h1 class="alert alert-info">Cursos</h1></center>
+		{{lista}}
+		<table class="table table-striped">
+	    <tr>
+	        <td>Materia</td>
+	        <td>Estudiantes Matriculados</td>
+	        <td>Solicitar Matricula</td>
+	    </tr>
+
+	    <tr ng-repeat="fila in mater">
+	        <td>{{fila.nombre}}</td>
+	        <td>{{fila.cupo}}</td>
+	        <td><button ng-click="mensaje()" type="button" class="btn btn-primary" aria-label="Left Align">
+				  
+				  <span class="glyphicon glyphicon-edit" aria-hidden="true">Matricularse</span>
+				</button></td>
+	        
+	    </tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>
